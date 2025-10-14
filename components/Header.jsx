@@ -14,20 +14,29 @@ const NAV = [
   { href: "/cart", label: "Cart" },
 ];
 
+// Logo de cabecera (guardado): https://res.cloudinary.com/da6il8qmv/image/upload/v1760384862/logo_theRoll_h293pw.png
+const LOGO_HEADER =
+  "https://res.cloudinary.com/da6il8qmv/image/upload/v1760384862/logo_theRoll_h293pw.png";
+
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // bloquear scroll cuando está abierto
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => (document.body.style.overflow = "");
-  }, [open]);
+  // <- CLAVE: solo montamos el portal cuando ya “montó” en cliente
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  // cerrar al cambiar de ruta
+  // Bloquear scroll al abrir
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+    if (!mounted) return;
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open, mounted]);
+
+  // Cerrar menú al cambiar de ruta
+  useEffect(() => setOpen(false), [pathname]);
 
   return (
     <>
@@ -36,7 +45,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="https://res.cloudinary.com/da6il8qmv/image/upload/v1760384862/logo_theRoll_h293pw.png"
+              src={LOGO_HEADER}
               alt="The Roll"
               width={180}
               height={40}
@@ -85,31 +94,17 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Menú móvil renderizado en portal al <body> */}
-      {typeof window !== "undefined" &&
+      {/* Drawer móvil en portal — solo después de montar (evita hydration mismatch) */}
+      {mounted && open &&
         createPortal(
-          <div
-            className={`fixed inset-0 z-[9999] transition-opacity duration-300 ${
-              open ? "opacity-100 visible" : "opacity-0 invisible"
-            }`}
-            aria-hidden={!open}
-          >
+          <div className="fixed inset-0 z-[9999]">
             {/* Overlay */}
             <div
-              className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${
-                open ? "opacity-100" : "opacity-0"
-              }`}
+              className="absolute inset-0 bg-black/40 opacity-100 transition-opacity duration-300"
               onClick={() => setOpen(false)}
             />
-
-            {/* Panel blanco */}
-            <div
-              className={`fixed inset-y-0 right-0 w-72 max-w-[85%] bg-white shadow-2xl p-5 flex flex-col transform transition-transform duration-300 ${
-                open ? "translate-x-0" : "translate-x-full"
-              } overflow-y-auto`}
-              role="dialog"
-              aria-modal="true"
-            >
+            {/* Panel */}
+            <div className="fixed inset-y-0 right-0 w-72 max-w-[85%] bg-white shadow-2xl p-5 flex flex-col transform transition-transform duration-300 translate-x-0 overflow-y-auto">
               <div className="flex items-center justify-between mb-4 border-b pb-2">
                 <span className="text-sm font-semibold text-neutral-800">Menu</span>
                 <button
@@ -117,12 +112,7 @@ export default function Header() {
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-5 w-5 text-neutral-800"
-                    stroke="currentColor"
-                    fill="none"
-                  >
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 text-neutral-800" stroke="currentColor" fill="none">
                     <path d="M6 6l12 12M18 6l-12 12" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </button>
@@ -157,7 +147,3 @@ export default function Header() {
     </>
   );
 }
-
-
-
-
