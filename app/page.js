@@ -1,103 +1,128 @@
+"use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const BANNER =
+    "https://res.cloudinary.com/da6il8qmv/image/upload/v1760380887/banner_ohqx3y.svg";
+  const LOGO_WHITE =
+    "https://res.cloudinary.com/da6il8qmv/image/upload/v1760380835/logo_white_r8ent5.png";
+  const LOGO_COLOR =
+    "https://res.cloudinary.com/da6il8qmv/image/upload/v1744040450/logo-theroll_xpdkcj.webp";
+  const SUSHI= "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377303/sushi2_ru7cgk.png"
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // fuerza la animación al montar
+  const [play, setPlay] = useState(false);
+  useEffect(() => setPlay(true), []);
+
+  return (
+    <section className="space-y-16">
+      {/* ===== HERO ===== */}
+      <div className="relative w-full h-[62vh] min-h-[560px] overflow-hidden border">
+        <img src={BANNER} alt="The Roll — hero" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div
+            className={[
+              "rounded-full bg-black/90 text-white",
+              "w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px]",
+              "shadow-[0_14px_36px_rgba(0,0,0,.38)]",
+              "flex flex-col items-center justify-center text-center",
+              play ? "hero-bubble" : "",
+            ].join(" ")}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className={["w-44 sm:w-52 md:w-60", play ? "hero-logo-enter" : ""].join(" ")}>
+              <Image src={LOGO_WHITE} alt="The Roll" width={640} height={240} className="w-full h-auto mx-auto" priority />
+            </div>
+            <p className={["mt-3 sm:mt-4 text-lg sm:text-xl tracking-wide text-neutral-200", play ? "hero-welcome" : ""].join(" ")}>
+              WELCOME
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+
+      {/* ===== LOGO PRINCIPAL + TAGLINE ===== */}
+      <div className="max-w-5xl mx-auto text-center space-y-6">
+        <Image
+          src={LOGO_COLOR}
+          alt="The Roll"
+          width={560}
+          height={220}
+          className="mx-auto h-auto w-[240px] sm:w-[360px] md:w-[480px]"
+        />
+        <h2 className="text-lg md:text-xl text-neutral-700">Where Tradition Meets Innovation!</h2>
+        <p className="text-neutral-500 max-w-3xl mx-auto">
+          Crafting Culinary Artistry: At The Roll, we take sushi to new heights, blending centuries-old techniques with
+          avant-garde creativity. Our master chefs meticulously select the freshest, sustainable ingredients, transforming
+          them into edible masterpieces that tantalize the taste buds.
+        </p>
+      </div>
+
+            {/* ===== BLOQUE: IMAGEN + PANEL ELEGANT AMBIANCE ===== */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 max-w-6xl mx-auto">
+        {/* Imagen lado izquierdo */}
+        <div className="overflow-hidden border shadow-sm">
+          <img
+            src={SUSHI}
+            alt="Signature roll"
+            className="w-full h-full object-cover"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+
+        {/* Panel derecho centrado verticalmente */}
+        <div className="flex items-center bg-neutral-100">
+          <div className="p-10 md:p-14 lg:p-16 text-center lg:text-left mx-auto">
+            <h3 className="text-4xl md:text-5xl font-light italic text-neutral-400">
+              Elegant Ambiance:
+            </h3>
+            <p className="mt-4 text-neutral-400 leading-relaxed max-w-xl">
+              Step into a serene oasis where contemporary design harmonizes with Japanese
+              aesthetics. Our warm, inviting space creates the perfect backdrop for an
+              intimate date, a lively gathering of friends, or a solo culinary adventure.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      {/* ===== BLOQUE: PÁRRAFOS EN DOS COLUMNAS ===== */}
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-neutral-700">
+          <div className="space-y-4">
+            <p>
+              <span className="font-medium">A Fusion of Flavors:</span> While we hold traditional sushi in high regard, we’re
+              not afraid to push boundaries. Experience innovative rolls that combine unexpected ingredients and textures for a
+              truly unforgettable dining experience.
+            </p>
+            <p>
+              <span className="font-medium">Global Inspirations:</span> Our menu draws inspiration from around the world,
+              infusing diverse influences into each dish. From the fiery spice of Latin America to the delicate balance of
+              European cuisine, embark on a journey of flavors that transcend borders.
+            </p>
+            <p>
+              <span className="font-medium">Beyond Sushi:</span> While sushi is our pride and joy, our menu offers a range of
+              options to suit every palate. From expertly crafted sashimi platters to comforting hot dishes, there’s something
+              for everyone.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <p>
+              <span className="font-medium">Impeccable Service:</span> Our dedicated staff is committed to providing a
+              seamless dining experience. Whether you’re a seasoned sushi connoisseur or new to this culinary world, every
+              visit is memorable.
+            </p>
+            <p>
+              <span className="font-medium">Sustainability at Heart:</span> We’re passionate about preserving the environment
+              for future generations — from sourcing practices to waste-reduction efforts.
+            </p>
+            <p>
+              <span className="font-medium">An Unforgettable Journey:</span> Tradition meets innovation, and every bite tells
+              a story. Join us for a culinary adventure like no other.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

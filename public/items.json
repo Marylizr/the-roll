@@ -1,0 +1,75 @@
+[
+   {
+     "id": 1,
+     "name": "Lobster Filet",
+     "description": "Krab and cream cheese rolled, topped with scallop dynamite and mushrooms.",
+     "price": 30,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377303/sushi1_ftv9ej.png",
+     "tag": "suggestions"
+   },
+   {
+     "id": 2,
+     "name": "Surf & Turf Roll",
+     "description": "Shrimp tempura with seared filet mignon; creamy wasabi sauce.",
+     "price": 25,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377303/sushi2_ru7cgk.png",
+     "tag": "suggestions"
+   },
+   {
+     "id": 3,
+     "name": "Surf",
+     "description": "Spicy yellowtail, cucumber, avocado and jalapeños; chili ponzu.",
+     "price": 24,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377303/sushi3_u2ny6q.png",
+     "tag": "suggestions"
+   },
+   {
+     "id": 4,
+     "name": "Tootsy Maki",
+     "description": "Krab mix, shrimp and cucumber with crunchy tempura and eel sauce.",
+     "price": 22,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377303/sushi3_u2ny6q.png",
+     "tag": "makis"
+   },
+   {
+     "id": 5,
+     "name": "Scallop Dynamite Roll",
+     "description": "Light tempura, baked, topped with sesame and sweet eel sauce.",
+     "price": 26,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377304/sushi5_ddkoz0.png",
+     "tag": "makis"
+   },
+   {
+     "id": 6,
+     "name": "Adults Only Roll",
+     "description": "Smoked salmon, avocado and serrano; served on a flaming hot plate.",
+     "price": 32,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377304/sushi6_sry7ht.png",
+     "tag": "makis"
+   },
+   {
+     "id": 7,
+     "name": "Sashimi Special",
+     "description": "Chef's selection of premium cuts.",
+     "price": 32,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377302/sashimi3_ylur4s.png",
+     "tag": "sashimi"
+   },
+   {
+     "id": 8,
+     "name": "Soda",
+     "description": "Soda with lemon.",
+     "price": 5,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760378481/soda1_rgb4ca.png",
+     "tag": "beverages"
+   },
+   {
+     "id": 9,
+     "name": "Mocktail",
+     "description": "Citrus & mint, alcohol free.",
+     "price": 12,
+     "img": "https://res.cloudinary.com/da6il8qmv/image/upload/v1760377301/mocktail_yoilyz.png",
+     "tag": "beverages"
+   }
+ ]
+ 
