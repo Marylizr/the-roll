@@ -157,7 +157,7 @@ function Card({ it, onToast }) {
   const total = price * qty;
 
   return (
-    <article className="menu-card">
+    <article className="menu-card flex flex-col">
       <div className="menu-card-image-wrapper aspect-[4/3] w-full">
         <Image
           src={it.img || ""}
@@ -169,8 +169,8 @@ function Card({ it, onToast }) {
         />
       </div>
 
-      <div className="p-4">
-        <div className="flex items-start justify-between gap-2 mb-3">
+      <div className="p-4 flex flex-col flex-1">
+        <div className="flex items-start justify-between gap-2 mb-3 min-h-[3rem]">
           <h3
             className="text-xs font-medium uppercase tracking-wide text-[var(--color-accent)] leading-snug max-w-[75%]"
           >
@@ -183,6 +183,8 @@ function Card({ it, onToast }) {
             ${price}
           </span>
         </div>
+
+        <div className="mt-auto">
 
         <div className="flex items-center justify-center gap-4 mb-3">
           <button
@@ -210,6 +212,7 @@ function Card({ it, onToast }) {
         >
           Add {qty} to Cart · ${total}
         </button>
+        </div>{/* mt-auto */}
       </div>
     </article>
   );
