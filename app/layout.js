@@ -35,7 +35,7 @@ export const metadata = {
     type: "website",
   },
   icons: {
-    icon: "https://res.cloudinary.com/da6il8qmv/image/upload/v1760376080/favIcon_urqhgd.png",
+    icon: "/favicon.png",
   },
   robots: { index: true, follow: true },
 };

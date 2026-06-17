@@ -74,15 +74,15 @@ export default function MenuClient() {
   return (
     <section className="pb-20">
       {/* Hero banner */}
-      <div className="bg-[var(--color-dark-alt)] border-b border-[var(--color-gray-border)] py-16 px-6 text-center">
+      <div className="bg-(--color-dark-alt) border-b border-(--color-gray-border) py-16 px-6 text-center">
         <h1
-          className="text-[var(--color-accent)] font-light"
+          className="text-(--color-accent) font-light"
           style={{ fontFamily: "var(--font-heading)" }}
         >
           Our Menu
         </h1>
         <div className="section-divider" />
-        <p className="text-[var(--color-gray-muted)] max-w-xl mx-auto">
+        <p className="text-(--color-gray-muted) max-w-xl mx-auto">
           Meticulously curated. Sustainably sourced. Extraordinarily crafted.
         </p>
       </div>
@@ -97,14 +97,14 @@ export default function MenuClient() {
       >
         <div className="space-y-4">
           {DATA.introLeft.map((p, i) => (
-            <p key={i} className="text-[var(--color-gray-muted)] leading-relaxed">{p}</p>
+            <p key={i} className="text-(--color-gray-muted) leading-relaxed">{p}</p>
           ))}
         </div>
         <div className="space-y-4">
           <div className="w-64 ml-auto">
             <Image src={LOGO_COLOR} alt="The Roll" width={420} height={220} className="w-full h-auto" loading="lazy" />
           </div>
-          <p className="text-[var(--color-gray-muted)] leading-relaxed">{DATA.introRight}</p>
+          <p className="text-(--color-gray-muted) leading-relaxed">{DATA.introRight}</p>
         </div>
       </div>
 
@@ -122,11 +122,11 @@ function MenuSection({ title, items, imageUrl, listSide = "left", isBulleted = f
   return (
     <div ref={section.ref} className={section.inView ? "animate-fade-up" : "opacity-0"}>
       {/* Section header */}
-      <div className="border-y border-[var(--color-gray-border)] bg-[var(--color-dark-alt)]">
+      <div className="border-y border-(--color-gray-border) bg-(--color-dark-alt)">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center gap-4">
-          <div className="w-1 h-5 bg-[var(--color-accent)] rounded-full" />
+          <div className="w-1 h-5 bg-(--color-accent) rounded-full" />
           <h2
-            className="text-[var(--color-accent)] tracking-[0.15em] uppercase text-sm font-medium"
+            className="text-(--color-accent) tracking-[0.15em] uppercase text-sm font-medium"
             style={{ fontFamily: "var(--font-body)" }}
           >
             {title}
@@ -154,7 +154,7 @@ function MenuSection({ title, items, imageUrl, listSide = "left", isBulleted = f
 
 function SideImage({ src, alt }) {
   return (
-    <div className="rounded-2xl overflow-hidden aspect-[4/3] border border-[var(--color-gray-border)] shadow-lg">
+    <div className="rounded-2xl overflow-hidden aspect-4/3 border border-(--color-gray-border) shadow-lg">
       <Image
         src={src}
         alt={alt}
@@ -178,32 +178,32 @@ function MenuList({ items, isBulleted = false }) {
 
   return (
     <div
-      className="rounded-2xl border border-[var(--color-gray-border)] bg-[var(--color-dark-alt)] p-6 md:p-8 space-y-8"
+      className="rounded-2xl border border-(--color-gray-border) bg-(--color-dark-alt) p-6 md:p-8 space-y-8"
     >
       {items.map((it) => (
         <div
           key={it.id}
-          className="flex items-start justify-between gap-6 pb-6 border-b border-[var(--color-gray-border)] last:border-none last:pb-0"
+          className="flex items-start justify-between gap-6 pb-6 border-b border-(--color-gray-border) last:border-none last:pb-0"
         >
           <div className="max-w-2xl">
             <h5
-              className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-accent)]"
+              className="text-xs font-medium uppercase tracking-[0.12em] text-(--color-accent)"
               style={{ fontFamily: "var(--font-body)" }}
             >
               {it.name}
             </h5>
             {isBulleted ? (
-              <ul className="mt-2 list-disc pl-5 text-[var(--color-gray-muted)] leading-relaxed space-y-1">
+              <ul className="mt-2 list-disc pl-5 text-(--color-gray-muted) leading-relaxed space-y-1">
                 {it.list?.map((li, i) => <li key={i}>{li}</li>)}
               </ul>
             ) : (
-              <p className="mt-2 text-[var(--color-gray-muted)] leading-relaxed">{it.desc}</p>
+              <p className="mt-2 text-(--color-gray-muted) leading-relaxed">{it.desc}</p>
             )}
           </div>
 
           <div className="shrink-0 text-right flex flex-col items-end gap-3">
             <span
-              className="text-2xl font-light text-[var(--color-white)]"
+              className="text-2xl font-light text-white"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               ${it.price}
@@ -213,8 +213,8 @@ function MenuList({ items, isBulleted = false }) {
               className={[
                 "h-9 px-4 rounded-md text-xs font-medium tracking-wide transition-all duration-200",
                 addedId === it.id
-                  ? "bg-[var(--color-accent)] text-[var(--color-black)]"
-                  : "border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[rgba(201,169,110,0.1)]",
+                  ? "bg-(--color-accent) text-black"
+                  : "border border-(--color-accent) text-(--color-accent) hover:bg-[rgba(201,169,110,0.1)]",
               ].join(" ")}
             >
               {addedId === it.id ? "Added ✓" : "Add to cart"}

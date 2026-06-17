@@ -14,8 +14,7 @@ const NAV = [
   { href: "/cart", label: "Cart" },
 ];
 
-const LOGO_HEADER =
-  "https://res.cloudinary.com/da6il8qmv/image/upload/f_auto,q_auto,w_360/v1760384862/logo_theRoll_h293pw.png";
+const LOGO_HEADER = "/logo-darkBG.webp";
 
 export default function Header() {
   const pathname = usePathname();
@@ -56,17 +55,17 @@ export default function Header() {
           "sticky top-0 z-50 transition-all duration-300",
           scrolled
             ? "nav-scrolled"
-            : "bg-[rgba(10,10,10,0.6)] backdrop-blur-md border-b border-[var(--color-gray-border)]",
+            : "bg-[rgba(10,10,10,0.6)] backdrop-blur-md border-b border-(--color-gray-border)",
         ].join(" ")}
       >
         <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
               src={LOGO_HEADER}
               alt="The Roll"
-              width={180}
-              height={40}
-              className="h-9 w-auto"
+              width={260}
+              height={96}
+              className="h-11 w-auto sm:h-12 md:h-14"
               priority
             />
           </Link>
@@ -82,8 +81,8 @@ export default function Header() {
                   className={[
                     "nav-link px-3 py-1.5 text-sm tracking-wide transition-colors duration-200",
                     active
-                      ? "text-[var(--color-accent)] active"
-                      : "text-[var(--color-white)] hover:text-[var(--color-accent)]",
+                      ? "text-(--color-accent) active"
+                      : "text-white hover:text-(--color-accent)",
                   ].join(" ")}
                 >
                   {item.label}
@@ -94,7 +93,7 @@ export default function Header() {
 
           {/* Hamburger */}
           <button
-            className="md:hidden inline-flex h-11 w-11 items-center justify-center text-[var(--color-white)]"
+            className="md:hidden inline-flex h-11 w-11 items-center justify-center text-white"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}
@@ -109,21 +108,21 @@ export default function Header() {
       {/* Mobile drawer */}
       {mounted && open &&
         createPortal(
-          <div className="fixed inset-0 z-[9999]" role="dialog" aria-modal="true" aria-label="Navigation menu">
+          <div className="fixed inset-0 z-9999" role="dialog" aria-modal="true" aria-label="Navigation menu">
             <div
               className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               onClick={close}
             />
-            <div className="fixed inset-y-0 right-0 w-72 max-w-[85%] bg-[var(--color-dark)] border-l border-[var(--color-gray-border)] shadow-2xl p-6 flex flex-col overflow-y-auto">
-              <div className="flex items-center justify-between mb-6 border-b border-[var(--color-gray-border)] pb-4">
+            <div className="fixed inset-y-0 right-0 w-72 max-w-[85%] bg-(--color-dark) border-l border-(--color-gray-border) shadow-2xl p-6 flex flex-col overflow-y-auto">
+              <div className="flex items-center justify-between mb-6 border-b border-(--color-gray-border) pb-4">
                 <span
                   style={{ fontFamily: "var(--font-heading)" }}
-                  className="text-[var(--color-accent)] text-xl tracking-widest uppercase"
+                  className="text-(--color-accent) text-xl tracking-widest uppercase"
                 >
                   Menu
                 </span>
                 <button
-                  className="inline-flex h-10 w-10 items-center justify-center text-[var(--color-white)] hover:text-[var(--color-accent)] transition-colors"
+                  className="inline-flex h-10 w-10 items-center justify-center text-white hover:text-(--color-accent) transition-colors"
                   onClick={close}
                   aria-label="Close menu"
                 >
@@ -143,8 +142,8 @@ export default function Header() {
                       className={[
                         "px-4 py-3 rounded-lg text-sm tracking-wide transition-colors duration-200",
                         active
-                          ? "bg-[rgba(201,169,110,0.12)] text-[var(--color-accent)] border border-[rgba(201,169,110,0.2)]"
-                          : "text-[var(--color-white)] hover:bg-[var(--color-dark-alt)] hover:text-[var(--color-accent)]",
+                            ? "bg-[rgba(201,169,110,0.12)] text-(--color-accent) border border-[rgba(201,169,110,0.2)]"
+                            : "text-white hover:bg-(--color-dark-alt) hover:text-(--color-accent)",
                       ].join(" ")}
                     >
                       {item.label}
@@ -153,7 +152,7 @@ export default function Header() {
                 })}
               </nav>
 
-              <div className="mt-auto pt-6 text-xs text-[var(--color-gray-muted)] text-center">
+              <div className="mt-auto pt-6 text-xs text-(--color-gray-muted) text-center">
                 © The Roll — Modern Japanese Cuisine
               </div>
             </div>
